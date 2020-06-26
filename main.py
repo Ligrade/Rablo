@@ -106,8 +106,9 @@ async def help_moderator(ctx):
 async def help_fun(ctx):
     d = discord.Embed(description='🎀 Fun', title='➡️Commands list', color=0xFFA2DD, timestamp=datetime.utcnow())
     d.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
-    d.add_field(name='`8ball <Question>`', value="Simule un jeter de dé au nombre de faces spécifique")
-    d.add_field(name='`pp <user>`', value="Get the profile picture of some user")
+    d.add_field(name='`Wiki <sujet>`', value="Fait une recherche wikipedia")
+    d.add_field(name='`8ball <question>`', value="Pose une question, je te répondrait")
+    d.add_field(name='`pp <user>`', value="Affiche la photo de profil de @user")
     await ctx.send(embed=d)
 
 @bot.command(aliases=['info', 'mod', 'all', 'music'])
@@ -117,7 +118,7 @@ async def fun(ctx):
 @bot.command(aliases=['add', 'invitelink'])
 async def invite(ctx):
     await ctx.send("""Voici mon lien d'invite ♥
-<https://discordapp.com/oauth2/authorize?client_id=721449967851536447&scope=bot&permissions=2146958591>""")
+< New link >""")
 
 #utils
 
@@ -186,7 +187,7 @@ async def _8ball(ctx, *, question):
             "Je ne pense pas."]
   await ctx.send(f'**Question :** {question}\n**Réponce :** {random.choice(responses)}')
 
-@bot.command()
+@bot.command(aliases=['Wiki', 'wikipedia', 'Wikipedia')
 async def wiki(ctx, wiki):
     a=f"""**WikiPedia Search**
 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""

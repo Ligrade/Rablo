@@ -193,17 +193,17 @@ async def _8ball(ctx, *, question):
 
 @bot.command()
 async def ms(ctx):
-	await ctx.send("Envoyez le plat que vous voulez cuisiner")
+	await ctx.send("Que voulez vous écrire ?")
 
 	def checkMessage(message):
 		return message.author == ctx.message.author and ctx.message.channel == message.channel
 
 	try:
-		recette = await bot.wait_for("message", timeout = 10, check = checkMessage)
+		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
 	except:
 		await ctx.send("Veuillez réitérer la commande.")
 		return
-	message = await ctx.send(f"La préparation de {recette.content} va commencer. Veuillez valider en réagissant avec ✅. Sinon réagissez avec ❌")
+	message = await ctx.send(f"**SONDAGE :** {recette.content}")
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
 
@@ -212,7 +212,7 @@ async def ms(ctx):
 		return ctx.message.author == user and message.id == reaction.message.id and (str(reaction.emoji) == "✅" or str(reaction.emoji) == "❌")
 
 	try:
-		reaction, user = await bot.wait_for("reaction_add", timeout = 10, check = checkEmoji)
+		reaction, user = await bot.wait_for("reaction_add", timeout = 60, check = checkEmoji)
 		if reaction.emoji == "✅":
 			await ctx.send("La recette a démarré.")
 		else:

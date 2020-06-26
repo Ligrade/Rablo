@@ -176,20 +176,30 @@ async def infos(ctx):
 async def ping(ctx):
     await ctx.send(f'🏓 Pong! `{round(bot.latency * 1000)}`ms')
 
-@bot.command()
-async def roll(ctx, sides, amount):
-  try:
-    sides = int(sides.split("d")[1])
-    rolls_list = []
-    for number in range(int(amount)):
-       # 1 is the minimum number the dice can have
-       rolls_list.append(random.randint(1, sides))
-    rolls = ", ".join(str(number) for number in rolls_list)
-    await ctx.send("Your dice rolls were: " + rolls)
-  except Exception as e:
-    # You should catch different exceptions for each problem and then handle them
-    # Exception is too broad
-    print(e)
-    await ctx.send("Incorrect format for sides of dice (try something like \"!roll d6 1\").")
+@bot.command(aliases=['8ball'])
+async def _8ball(ctx, *, question):
+  responses = [
+            "Oui.",
+            "Non.",
+            "Sans aucun doute.",
+            "Yes - definitely.",
+            "You may rely on it.",
+            "As I see it, yes.",
+            "Most likely.",
+            "Outlook good.",
+            "Yes.",
+            "Signs point to yes.",
+            "Reply hazy, try again.",
+            "Ask again later.",
+            "Better not tell you now.",
+            "Cannot predict now.",
+            "Concentrate and ask again.",
+            "Don't count on it.",
+            "My reply is no.",
+            "My sources say no.",
+            "Outlook not so good.",
+            "Very doubtful."]
+  await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
+
 
 bot.run(bot.run(os.environ['TOKEN']))

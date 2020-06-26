@@ -187,11 +187,11 @@ async def _8ball(ctx, *, question):
             "Je ne pense pas."]
   await ctx.send(f'**Question :** {question}\n**Réponce :** {random.choice(responses)}')
 
-@bot.command(aliases=['Wiki', 'wikipedia', 'Wikipedia')
-async def wiki(ctx, wiki):
-    a=f"""**Wikipedia Search**
-🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
-    await ctx.send(a)
+# @bot.command(aliases=['Wiki', 'wikipedia', 'Wikipedia')
+# async def wiki(ctx, wiki):
+#     a=f"""**Wikipedia Search**
+# 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
+#     await ctx.send(a)
 
 
 bot.run(bot.run(os.environ['TOKEN']))

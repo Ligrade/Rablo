@@ -110,7 +110,7 @@ async def help_fun(ctx):
     d.add_field(name='`pp <user>`', value="Get the profile picture of some user")
     await ctx.send(embed=d)
 
-@bot.command(aliases=['info', 'moderator', 'all', 'master'])
+@bot.command(aliases=['info', 'mod', 'all', 'music'])
 async def fun(ctx):
     await ctx.send(f"Entrez `{prefix}help <catégorie>` pour afficher toutes les commandes de'une catégorie & leur aide.")
 

@@ -191,7 +191,7 @@ async def _8ball(ctx, *, question):
 # 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
 #     await ctx.send(a)
 
-@bot.command(aliases=['minisondage', 'sondage', 'ms')
+@bot.command(aliases=['minisondage', 'sondage', 'ms'])
 async def msondage(ctx):
 	await ctx.send("Que voulez vous écrire ?")
 

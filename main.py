@@ -118,7 +118,7 @@ async def fun(ctx):
 @bot.command(aliases=['add', 'invitelink'])
 async def invite(ctx):
     await ctx.send("""Voici mon lien d'invite ♥
-< New link >""")
+<https://discordapp.com/oauth2/authorize?client_id=721449967851536447&scope=bot&permissions=2146958591>""")
 
 #utils
 

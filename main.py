@@ -177,9 +177,11 @@ async def pingg(ctx):
     await ctx.send('Pong!')
 
 @bot.command(pass_context=True)
-async def ping(ctx):
-    now = datetime.datetime.utcnow()
-    delta = now - ctx.message.timestamp
-    await ctx.send('{}ms'.format(delta(microseconds=1)))
+    async def ping(ctx):
+        time_1 = time.perf_counter()
+        await ctx.trigger_typing()
+        time_2 = time.perf_counter()
+        ping = round((time_2-time_1)*1000)
+        await ctx.send(f"ping = {ping}")
 
 bot.run(bot.run(os.environ['TOKEN']))

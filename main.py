@@ -191,47 +191,50 @@ async def wiki(ctx, wiki):
 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
     await ctx.send(a)
 
-# @bot.command(aliases=['minisondage', 'sondage', 'ms'])
-# async def msondage(ctx):
-# 	await ctx.send("Que voulez vous écrire ?")
+@bot.command(aliases=['minisondage', 'sondage', 'ms'])
+async def msondage(ctx):
+	await ctx.send("Que voulez vous écrire ?")
 
-# 	def checkMessage(message):
-# 		return message.author == ctx.message.author and ctx.message.channel == message.channel
+	def checkMessage(message):
+		return message.author == ctx.message.author and ctx.message.channel == message.channel
 
-# 	try:
-# 		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
-# 	except:
-# 		await ctx.send("Veuillez réitérer la commande.")
-# 		return
-# 	message = await ctx.send(f"**Sondage:** {recette.content}")
-# 	await message.add_reaction("✅")
-# 	await message.add_reaction("❌")
+	try:
+		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
+	except:
+		await ctx.send("Veuillez réitérer la commande.")
+		return
+        embed = discord.Embed(title=Sondage, description='')
+        embed.set_footer(text='recette.content: {}'
+	message = await ctx.send(f"**Sondage:** {recette.content}")
+    await react_message.edit(embed=embed)
+	await message.add_reaction("✅")
+	await message.add_reaction("❌")
 
 #mat
 
-@bot.command()
-async def poll(ctx, question, *options: str):
-    if len(options) <= 1:
-        await ctx.send('You need more than one option to make a poll!')
-        return
-    if len(options) > 10:
-        await ctx.send('You cannot make a poll for more than 10 things!')
-        return
+# @bot.command()
+# async def poll(ctx, question, *options: str):
+#     if len(options) <= 1:
+#         await ctx.send('You need more than one option to make a poll!')
+#         return
+#     if len(options) > 10:
+#         await ctx.send('You cannot make a poll for more than 10 things!')
+#         return
 
 
-    if len(options) == 2 and options[0] == 'yes' and options[1] == 'no':
-        reactions = ['✅', '❌']
-    else:
-        reactions = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '8⃣', '9⃣', '🔟']
+#     if len(options) == 2 and options[0] == 'yes' and options[1] == 'no':
+#         reactions = ['✅', '❌']
+#     else:
+#         reactions = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '8⃣', '9⃣', '🔟']
 
-    description = []
-    for x, option in enumerate(options):
-        description += '\n {} {}'.format(reactions[x], option)
-    embed = discord.Embed(title=question, description=''.join(description))
-    react_message = await ctx.send(embed=embed)
-    for reaction in reactions[:len(options)]:
-        await react_message.edit(react_message, reaction)
-    embed.set_footer(text='Poll ID: {}'.format(react_message.id))
-    await react_message.edit(embed=embed)
+#     description = []
+#     for x, option in enumerate(options):
+#         description += '\n {} {}'.format(reactions[x], option)
+#     embed = discord.Embed(title=question, description=''.join(description))
+#     react_message = await ctx.send(embed=embed)
+#     for reaction in reactions[:len(options)]:
+#         await react_message.edit(react_message, reaction)
+#     embed.set_footer(text='Poll ID: {}'.format(react_message.id))
+#     await react_message.edit(embed=embed)
 
 bot.run(bot.run(os.environ['TOKEN']))

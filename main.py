@@ -14,6 +14,7 @@ import random
 import aiohttp
 import logging
 import asyncio
+import time
 import discord
 from discord.ext import commands
 import datetime
@@ -164,16 +165,24 @@ async def clear(ctx, amount: int):
 @bot.command()
 async def infos(ctx):
     a = """Créé par Ligrade & Miowski
-[M'inviter](https://discordapp.com/oauth2/authorize?client_id=721449967851536447&scope=bot&permissions=2146958591)
-[Serveur de support](https://discord.gg/DgWAbPG)"""
+[M'inviter]( #link )
+[Serveur de support](https://discord.gg/zVms5sF)"""
     e = discord.Embed(title = "À propos", description = a, color=0xF4A2FF, timestamp=datetime.utcnow())
-    e.set_thumbnail(url="https://media.discordapp.net/attachments/489041727697584148/505805443453419541/1540620568476.png")
+    e.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
     e.set_footer(text=botversion)
     e.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
     await ctx.send(embed=e)
 
 @bot.command()
-async def ping(ctx):
+async def pingg(ctx):
     await ctx.send('Pong!')
+
+from time import 
+@bot.command()
+async def ping(ctx):
+time_then = time.monotonic()
+pinger = await client.send_message(message.channel, '__*`Pinging...`*__')
+ping = '%.2f' % (1000*(time.monotonic()-time_then))
+await client.edit_message(pinger, ':ping_pong: \n **Pong!** __**`' + ping + 'ms`**__') # you can edit this to say whatever you want really. Hope this helps.
 
 bot.run(bot.run(os.environ['TOKEN']))

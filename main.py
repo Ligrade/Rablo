@@ -180,6 +180,6 @@ async def pingg(ctx):
 async def ping(ctx):
     now = datetime.datetime.utcnow()
     delta = now - ctx.message.timestamp
-    await bot.say('{}ms'.format(delta(microseconds=1)))
+    await ctx.send('{}ms'.format(delta(microseconds=1)))
 
 bot.run(bot.run(os.environ['TOKEN']))

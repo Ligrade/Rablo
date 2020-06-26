@@ -212,7 +212,8 @@ async def msondage(ctx):
 @bot.command()
 async def mat(ctx):
 	#await ctx.guild.ban(user, reason = reason)
-	embed = discord.Embed(title = "**Banissement**", description = "Un modérateur a frappé !", url = "", color=0xfa8072)
+	embed = discord.Embed(title = "**SONDAGE**", description = "Un nouveaux sondage !", url = "", color=0xfa8072)
+    embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/724765475900489831/726101534533877870/question_mark_PNG120.png")
 
 	await ctx.send(embed = embed)
 

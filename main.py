@@ -212,9 +212,9 @@ async def msondage(ctx):
 @bot.command()
 async def mat(ctx):
 	#await ctx.guild.ban(user, reason = reason)
-	embed = discord.Embed(title = "**Banissement**", description = "Un modérateur a frappé !", url = " ", color=0xfa8072)
-	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = "https://www.youtube.com/channel/UChDVo_Uqomuk7KnMVp-Lhhw?view_as=subscriber")
-	embed.set_thumbnail(url = "https://discordemoji.com/assets/emoji/BanneHammer.png")
+	embed = discord.Embed(title = "**Un sondage ?**", description = "Quel est votre sondage ?", url = " ", color=0xfa8072)
+	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = " ")
+	embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/724765475900489831/726101534533877870/question_mark_PNG120.png")
 
 	await ctx.send(embed = embed)
 

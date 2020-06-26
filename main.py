@@ -209,38 +209,29 @@ async def wiki(ctx, wiki):
 
 #mat
 
-    @commands.command(pass_context = True)
-    async def poll(self, ctx, question, *options: str):
-        author = ctx.message.author
-        server = ctx.message.server
+@bot.command()
+async def poll(ctx, question, *options: str):
+    if len(options) <= 1:
+        await ctx.send('You need more than one option to make a poll!')
+        return
+    if len(options) > 10:
+        await ctx.send('You cannot make a poll for more than 10 things!')
+        return
 
-        if not author.server_permissions.manage_messages: return await self.bot.say(DISCORD_SERVER_ERROR_MSG)
 
-        if len(options) <= 1:
-            await self.bot.say("```Error! A poll must have more than one option.```")
-            return
-        if len(options) > 2:
-            await self.bot.say("```Error! Poll can have no more than two options.```")
-            return
+    if len(options) == 2 and options[0] == 'yes' and options[1] == 'no':
+        reactions = ['✅', '❌']
+    else:
+        reactions = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '8⃣', '9⃣', '🔟']
 
-        if len(options) == 2 and options[0] == "yes" and options[1] == "no":
-            reactions = ['👍', '👎']
-        else:
-            reactions = ['👍', '👎']
-
-        description = []
-        for x, option in enumerate(options):
-            description += '\n {} {}'.format(reactions[x], option)
-
-        embed = discord.Embed(title = question, color = 3553599, description = ''.join(description))
-
-        react_message = await self.bot.say(embed = embed)
-
-        for reaction in reactions[:len(options)]:
-            await self.bot.add_reaction(react_message, reaction)
-
-        embed.set_footer(text='Poll ID: {}'.format(react_message.id))
-
-        await self.bot.edit_message(react_message, embed=embed)
+    description = []
+    for x, option in enumerate(options):
+        description += '\n {} {}'.format(reactions[x], option)
+    embed = discord.Embed(title=question, description=''.join(description))
+    react_message = await ctx.send(embed=embed)
+    for reaction in reactions[:len(options)]:
+        await react_message.edit(react_message, reaction)
+    embed.set_footer(text='Poll ID: {}'.format(react_message.id))
+    await react_message.edit(embed=embed)
 
 bot.run(bot.run(os.environ['TOKEN']))

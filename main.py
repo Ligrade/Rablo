@@ -177,7 +177,7 @@ async def ping(ctx):
     await ctx.send(f'🏓 Pong! `{round(bot.latency * 1000)}`ms')
 
 @bot.command()
-async def roll(self, channel, random):
+async def roll(ctx):
     cards = ['1','2','3','4']
     await self.send_message(channel, "You chose number {}!".format(random.choice(cards)))
 

@@ -172,12 +172,13 @@ async def infos(ctx):
     e.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
     await ctx.send(embed=e)
 
-@bot.command()
-async def pingg(ctx):
-    await ctx.send('Pong!')
+@bot.command(aliases=['pingg', 'Ping'])
+async def ping(ctx):
+    await ctx.send(f'🏓 Pong! `{round(bot.latency * 1000)}`ms')
 
 @bot.command()
-async def ping(ctx):
-    await ctx.send(f'Pong! `{round(bot.latency * 1000)}`ms')
+async def roll(self, channel, random):
+    cards = ['1','2','3','4']
+    await self.send_message(channel, "You chose number {}!".format(random.choice(cards)))
 
 bot.run(bot.run(os.environ['TOKEN']))

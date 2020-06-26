@@ -209,11 +209,11 @@ async def wiki(ctx, wiki):
 
 #embed
 
-@bot.command()
-async def mat(ctx):
+@bot.command(aliases=['minisondage', 'sondage', 'ms'])
+async def msondage(ctx):
 	await ctx.send("Que voulez vous écrire ?")
 
-def checkMessage(message):
+	def checkMessage(message):
 		return message.author == ctx.message.author and ctx.message.channel == message.channel
 
 	try:
@@ -221,11 +221,8 @@ def checkMessage(message):
 	except:
 		await ctx.send("Veuillez réitérer la commande.")
 		return
-
-	embed = discord.Embed(title = "**SONDAGE**", description = "text test", url = " ", color=0xfa8072)
-	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = " ")
-	embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/724765475900489831/726101534533877870/question_mark_PNG120.png")
-
-    await ctx.send(embed = embed)
+	message = await ctx.send(f"**Sondage:** {recette.content} {ctx.author.name}")
+	await message.add_reaction("✅")
+	await message.add_reaction("❌")
 
 bot.run(bot.run(os.environ['TOKEN']))

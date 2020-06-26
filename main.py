@@ -203,7 +203,7 @@ async def msondage(ctx):
 	except:
 		await ctx.send("Veuillez réitérer la commande.")
 		return
-	message = await ctx.send(f"**Sondage de {usr}:** {recette.content}")
+	message = await ctx.send(f"**Sondage de {author.name}:** {recette.content}")
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
 

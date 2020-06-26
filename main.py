@@ -218,7 +218,7 @@ async def mat(ctx, user : discord.User, *, reason = "Aucune raison n'a été don
 	embed.add_field(name = "Membre banni", value = user.name, inline = True)
 	embed.add_field(name = "Raison", value = reason, inline = True)
 	embed.add_field(name = "Modérateur", value = ctx.author.name, inline = True)
-	embed.set_footer(text = random.choice(funFact))
+	embed.set_footer(text = "random.choice(funFact)")
 
 	await ctx.send(embed = embed)
 

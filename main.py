@@ -176,7 +176,7 @@ async def infos(ctx):
 async def pingg(ctx):
     await ctx.send('Pong!')
 
-@bot.command(pass_context=True)
+@bot.command()
     async def ping(ctx):
         time_1 = time.perf_counter()
         await ctx.trigger_typing()

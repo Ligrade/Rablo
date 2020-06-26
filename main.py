@@ -219,20 +219,18 @@ async def mat(ctx):
 	try:
 		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
 	except:
-		await ctx.send("Veuillez réitérer la commande.")
+		await ctx.send("Sondage annuler ❌")
 		return
 
 	embed = discord.Embed(title = "**Sondage**", description = " ", url = " ", color=0xfa8072)
 	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = " ")
 	embed.set_thumbnail(url = "https://discordemoji.com/assets/emoji/BanneHammer.png")
-	embed.add_field(name = "Sondage", value = reason, inline = True)
+	embed.add_field(name = "Sondage", value = recette.content, inline = True)
 	embed.add_field(name = "Host", value = ctx.author.name, inline = True)
 	embed.set_footer(text = ".ms")
 
-    await ctx.send(embed = embed)
-
-	message = await ctx.send(f"**Sondage:** {recette.content}")
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
+    await ctx.send(embed = embed)
 
 bot.run(bot.run(os.environ['TOKEN']))

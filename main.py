@@ -14,7 +14,6 @@ import random
 import aiohttp
 import logging
 import asyncio
-import time
 import discord
 from discord.ext import commands
 import datetime
@@ -176,8 +175,6 @@ async def infos(ctx):
 @bot.command()
 async def pingg(ctx):
     await ctx.send('Pong!')
-
-from time import 
 
 @bot.command()
 async def ping(ctx):

@@ -191,26 +191,26 @@ async def wiki(ctx, wiki):
 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
     await ctx.send(a)
 
-@bot.command(aliases=['minisondage', 'sondage', 'ms'])
-async def msondage(ctx):
-	await ctx.send("Que voulez vous écrire ?")
+# @bot.command(aliases=['minisondage', 'sondage', 'ms'])
+# async def msondage(ctx):
+# 	await ctx.send("Que voulez vous écrire ?")
 
-	def checkMessage(message):
-		return message.author == ctx.message.author and ctx.message.channel == message.channel
+# 	def checkMessage(message):
+# 		return message.author == ctx.message.author and ctx.message.channel == message.channel
 
-	try:
-		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
-	except:
-		await ctx.send("Veuillez réitérer la commande.")
-		return
-	message = await ctx.send(f"**Sondage:** {recette.content}")
-	await message.add_reaction("✅")
-	await message.add_reaction("❌")
+# 	try:
+# 		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
+# 	except:
+# 		await ctx.send("Veuillez réitérer la commande.")
+# 		return
+# 	message = await ctx.send(f"**Sondage:** {recette.content}")
+# 	await message.add_reaction("✅")
+# 	await message.add_reaction("❌")
 
 #mat
 
 @bot.command()
-async def mat(ctx):
+async def ms(ctx):
 	await ctx.send("Que voulez vous écrire ?")
     	def checkMessage(message):
 		return message.author == ctx.message.author and ctx.message.channel == message.channel
@@ -220,12 +220,11 @@ async def mat(ctx):
 	except:
 		await ctx.send("Veuillez réitérer la commande.")
 		return
-	embed = discord.Embed(title = "**Banissement**", description = "Un modérateur a frappé !", url = "https://www.youtube.com/channel/UChDVo_Uqomuk7KnMVp-Lhhw?view_as=subscriber", color=0xfa8072)
-	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = "https://www.youtube.com/channel/UChDVo_Uqomuk7KnMVp-Lhhw?view_as=subscriber")
+	embed = discord.Embed(title = "**SONDAGE**", description = "Un modérateur a frappé !", url = " ", color=0xfa8072)
+	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = " ")
 	embed.set_thumbnail(url = "https://discordemoji.com/assets/emoji/BanneHammer.png")
-	embed.add_field(name = "Membre banni", value = user.name, inline = True)
-	embed.add_field(name = "Raison", value = reason, inline = True)
-	embed.add_field(name = "Modérateur", value = ctx.author.name, inline = True)
+    embed.add_field(name = "Host", value = ctx.author.name, inline = True)
+	embed.add_field(name = "Raison", value = recette.content, inline = True)
 	embed.set_footer(text = "(funFact) .ms")
 
 	await ctx.send(embed = embed)

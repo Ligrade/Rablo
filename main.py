@@ -120,8 +120,6 @@ async def invite(ctx):
     await ctx.send("""Voici mon lien d'invite ♥
 <https://discordapp.com/oauth2/authorize?client_id=721449967851536447&scope=bot&permissions=2146958591>""")
 
-#utils
-
 @bot.command(aliases=['profilepic', 'ppic', 'avatar'])
 async def pp(ctx, usr: discord.User):
     e = discord.Embed(description=f'👤 Photo de profil de {usr.name}', title='➡️Avatar', color=0x5D5DFF, timestamp=datetime.utcnow())
@@ -193,5 +191,20 @@ async def _8ball(ctx, *, question):
 # 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
 #     await ctx.send(a)
 
+@bot.command(aliases=['Minisondage', 'MiniSondage', 'miniSondage', 'ms')
+async def minisondage(ctx):
+	await ctx.send("Quel est le sujet ?")
+
+	def checkMessage(message):
+		return message.author == ctx.message.author and ctx.message.channel == message.channel
+
+	try:
+		recette = await bot.wait_for("message", timeout = 10, check = checkMessage)
+	except:
+		await ctx.send("Veuillez réitérer la commande.")
+		return
+	message = await ctx.send(f"**Mini sondage :** {recette.content}")
+	await message.add_reaction("✅")
+	await message.add_reaction("❌")
 
 bot.run(bot.run(os.environ['TOKEN']))

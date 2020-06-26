@@ -230,4 +230,13 @@ async def ms(ctx):
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
 
+#embed
+
+@bot.command()
+async def mat(ctx, user : discord.User, *, reason = "Aucune raison n'a été donné"):
+	#await ctx.guild.ban(user, reason = reason)
+	embed = discord.Embed(title = "**Banissement**", description = "Un modérateur a frappé !", url = "", color=0xfa8072)
+
+	await ctx.send(embed = embed)
+
 bot.run(bot.run(os.environ['TOKEN']))

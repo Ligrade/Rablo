@@ -210,15 +210,23 @@ async def msondage(ctx):
 #mat
 
 @bot.command()
-async def mat(ctx, user : discord.User, *, reason = "Aucune raison n'a été donné"):
-	#await ctx.guild.ban(user, reason = reason)
+async def mat(ctx):
+	await ctx.send("Que voulez vous écrire ?")
+    	def checkMessage(message):
+		return message.author == ctx.message.author and ctx.message.channel == message.channel
+
+	try:
+		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
+	except:
+		await ctx.send("Veuillez réitérer la commande.")
+		return
 	embed = discord.Embed(title = "**Banissement**", description = "Un modérateur a frappé !", url = "https://www.youtube.com/channel/UChDVo_Uqomuk7KnMVp-Lhhw?view_as=subscriber", color=0xfa8072)
 	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = "https://www.youtube.com/channel/UChDVo_Uqomuk7KnMVp-Lhhw?view_as=subscriber")
 	embed.set_thumbnail(url = "https://discordemoji.com/assets/emoji/BanneHammer.png")
 	embed.add_field(name = "Membre banni", value = user.name, inline = True)
 	embed.add_field(name = "Raison", value = reason, inline = True)
 	embed.add_field(name = "Modérateur", value = ctx.author.name, inline = True)
-	embed.set_footer(text = "random.choice(funFact)")
+	embed.set_footer(text = "(funFact) .ms")
 
 	await ctx.send(embed = embed)
 

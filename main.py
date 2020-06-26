@@ -185,11 +185,11 @@ async def _8ball(ctx, *, question):
             "Je ne pense pas."]
   await ctx.send(f'**Question :** {question}\n**Réponce :** {random.choice(responses)}')
 
-# @bot.command(aliases=['Wiki', 'wikipedia', 'Wikipedia')
-# async def wiki(ctx, wiki):
-#     a=f"""**Wikipedia Search**
-# 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
-#     await ctx.send(a)
+@bot.command(aliases=['Wiki', 'wikipedia', 'Wikipedia'])
+async def wiki(ctx, wiki):
+    a=f"""**Wikipedia Search**
+🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
+    await ctx.send(a)
 
 @bot.command(aliases=['minisondage', 'sondage', 'ms'])
 async def msondage(ctx):
@@ -203,7 +203,7 @@ async def msondage(ctx):
 	except:
 		await ctx.send("Veuillez réitérer la commande.")
 		return
-	message = await ctx.send(f"**SONDAGE :** {recette.content}")
+	message = await ctx.send(f"**Sondage de {usr}:** {recette.content}")
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
 

@@ -229,6 +229,8 @@ async def mat(ctx):
 	embed.add_field(name = "Host", value = ctx.author.name, inline = True)
 	embed.set_footer(text = ".ms")
 
+    await ctx.send(embed = embed)
+
 	message = await ctx.send(f"**Sondage:** {recette.content}")
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")

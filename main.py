@@ -191,9 +191,9 @@ async def _8ball(ctx, *, question):
 # 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
 #     await ctx.send(a)
 
-@bot.command(aliases=['Minisondage', 'MiniSondage', 'miniSondage', 'ms')
-async def minisondage(ctx):
-	await ctx.send("Quel est le sujet ?")
+@bot.command()
+async def ms(ctx):
+	await ctx.send("Envoyez le plat que vous voulez cuisiner")
 
 	def checkMessage(message):
 		return message.author == ctx.message.author and ctx.message.channel == message.channel
@@ -203,8 +203,21 @@ async def minisondage(ctx):
 	except:
 		await ctx.send("Veuillez réitérer la commande.")
 		return
-	message = await ctx.send(f"**Mini sondage :** {recette.content}")
+	message = await ctx.send(f"La préparation de {recette.content} va commencer. Veuillez valider en réagissant avec ✅. Sinon réagissez avec ❌")
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
+
+
+	def checkEmoji(reaction, user):
+		return ctx.message.author == user and message.id == reaction.message.id and (str(reaction.emoji) == "✅" or str(reaction.emoji) == "❌")
+
+	try:
+		reaction, user = await bot.wait_for("reaction_add", timeout = 10, check = checkEmoji)
+		if reaction.emoji == "✅":
+			await ctx.send("La recette a démarré.")
+		else:
+			await ctx.send("La recette a bien été annulé.")
+	except:
+		await ctx.send("La recette a bien été annulé.")
 
 bot.run(bot.run(os.environ['TOKEN']))

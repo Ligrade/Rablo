@@ -178,11 +178,9 @@ async def pingg(ctx):
     await ctx.send('Pong!')
 
 from time import 
+
 @bot.command()
 async def ping(ctx):
-time_then = time.monotonic()
-pinger = await client.send_message(message.channel, '__*`Pinging...`*__')
-ping = '%.2f' % (1000*(time.monotonic()-time_then))
-await client.edit_message(pinger, ':ping_pong: \n **Pong!** __**`' + ping + 'ms`**__') # you can edit this to say whatever you want really. Hope this helps.
+    await ctx.send('Pong! {0}'.format(round(bot.latency, 1)))
 
 bot.run(bot.run(os.environ['TOKEN']))

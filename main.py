@@ -210,7 +210,7 @@ async def msondage(ctx):
 #embed
 
 @bot.command()
-async def mat(ctx, user : discord.User, *, reason = "Aucune raison n'a été donné"):
+async def mat(ctx):
 	#await ctx.guild.ban(user, reason = reason)
 	embed = discord.Embed(title = "**Banissement**", description = "Un modérateur a frappé !", url = "", color=0xfa8072)
 

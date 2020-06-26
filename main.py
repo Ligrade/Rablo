@@ -177,11 +177,7 @@ async def pingg(ctx):
     await ctx.send('Pong!')
 
 @bot.command()
-    async def ping(ctx):
-        time_1 = time.perf_counter()
-        await ctx.trigger_typing()
-        time_2 = time.perf_counter()
-        ping = round((time_2-time_1)*1000)
-        await ctx.send(f"ping = {ping}")
+async def ping(ctx):
+    await ctx.send(f'Pong! In {round(bot.latency * 1000)}ms')
 
 bot.run(bot.run(os.environ['TOKEN']))

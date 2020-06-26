@@ -189,7 +189,7 @@ async def _8ball(ctx, *, question):
 
 @bot.command(aliases=['Wiki', 'wikipedia', 'Wikipedia')
 async def wiki(ctx, wiki):
-    a=f"""**WikiPedia Search**
+    a=f"""**Wikipedia Search**
 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
     await ctx.send(a)
 

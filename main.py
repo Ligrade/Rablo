@@ -187,7 +187,7 @@ async def _8ball(ctx, *, question):
   await ctx.send(f'**Question :** {question}\n**Réponce :** {random.choice(responses)}')
 
 @bot.command(aliases=['8ball'])
-async def _8ball(ctx):
+async def __8ball(ctx):
     await ctx.send(f"Entrez **.8ball <Votre question>** pour continuer")
 
 

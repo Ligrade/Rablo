@@ -215,7 +215,19 @@ async def mat(ctx):
 	embed = discord.Embed(title = "**Un sondage ?**", description = "Quel est votre sondage ?", url = " ", color=0xfa8072)
 	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = " ")
 	embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/724765475900489831/726101534533877870/question_mark_PNG120.png")
+	await ctx.send(embed = embed)
 
+    	def checkMessage(message):
+		return message.author == ctx.message.author and ctx.message.channel == message.channel
+
+	try:
+		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
+	except:
+		await ctx.send("Veuillez réitérer la commande.")
+		return
+    embed = discord.Embed(title = "**SONDAGE**", description = recette.content, url = " ", color=0xfa8072)
+	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = " ")
+	embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/724765475900489831/726101534533877870/question_mark_PNG120.png")
 	await ctx.send(embed = embed)
 
 bot.run(bot.run(os.environ['TOKEN']))

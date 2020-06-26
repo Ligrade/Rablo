@@ -186,9 +186,9 @@ async def _8ball(ctx, *, question):
             "Je ne pense pas."]
   await ctx.send(f'**Question :** {question}\n**Réponce :** {random.choice(responses)}')
 
-@bot.command(aliases=['8ball'])
-async def __8ball(ctx):
-    await ctx.send(f"Entrez **.8ball <Votre question>** pour continuer")
+#@bot.command(aliases=['8ball'])
+#async def __8ball(ctx):
+#    await ctx.send(f"Entrez **.8ball <Votre question>** pour continuer")
 
 
 bot.run(bot.run(os.environ['TOKEN']))

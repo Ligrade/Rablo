@@ -210,7 +210,7 @@ async def msondage(ctx):
 #mat
 
 @bot.command()
-async def ban(ctx, user : discord.User, *, reason = "Aucune raison n'a été donné"):
+async def mat(ctx, user : discord.User, *, reason = "Aucune raison n'a été donné"):
 	#await ctx.guild.ban(user, reason = reason)
 	embed = discord.Embed(title = "**Banissement**", description = "Un modérateur a frappé !", url = "https://www.youtube.com/channel/UChDVo_Uqomuk7KnMVp-Lhhw?view_as=subscriber", color=0xfa8072)
 	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = "https://www.youtube.com/channel/UChDVo_Uqomuk7KnMVp-Lhhw?view_as=subscriber")
@@ -219,8 +219,6 @@ async def ban(ctx, user : discord.User, *, reason = "Aucune raison n'a été don
 	embed.add_field(name = "Raison", value = reason, inline = True)
 	embed.add_field(name = "Modérateur", value = ctx.author.name, inline = True)
 	embed.set_footer(text = random.choice(funFact))
-    	await message.add_reaction("✅")
-	    await message.add_reaction("❌")
 
 	await ctx.send(embed = embed)
 

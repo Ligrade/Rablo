@@ -106,7 +106,7 @@ async def help_moderator(ctx):
 async def help_fun(ctx):
     d = discord.Embed(description='🎀 Fun', title='➡️Commands list', color=0xFFA2DD, timestamp=datetime.utcnow())
     d.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
-    d.add_field(name='`roll <number>`', value="Simule un jeter de dé au nombre de faces spécifique")
+    d.add_field(name='`8ball <Question>`', value="Simule un jeter de dé au nombre de faces spécifique")
     d.add_field(name='`pp <user>`', value="Get the profile picture of some user")
     await ctx.send(embed=d)
 
@@ -186,9 +186,11 @@ async def _8ball(ctx, *, question):
             "Je ne pense pas."]
   await ctx.send(f'**Question :** {question}\n**Réponce :** {random.choice(responses)}')
 
-#@bot.command(aliases=['8ball'])
-#async def __8ball(ctx):
-#    await ctx.send(f"Entrez **.8ball <Votre question>** pour continuer")
+@bot.command()
+async def wiki(ctx, wiki):
+    a=f"""**WikiPedia Search**
+🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
+    await ctx.send(a)
 
 
 bot.run(bot.run(os.environ['TOKEN']))

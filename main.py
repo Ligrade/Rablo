@@ -210,27 +210,18 @@ async def msondage(ctx):
 #mat
 
 @bot.command()
-async def mat(ctx):
-	await ctx.send("Que voulez vous écrire ?")
-
-	def checkMessage(message):
-		return message.author == ctx.message.author and ctx.message.channel == message.channel
-
-	try:
-		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
-	except:
-		await ctx.send("Sondage annuler ❌")
-		return
-
-	embed = discord.Embed(title = "**Sondage**", description = " ", url = " ", color=0xfa8072)
-	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = " ")
+async def ban(ctx, user : discord.User, *, reason = "Aucune raison n'a été donné"):
+	#await ctx.guild.ban(user, reason = reason)
+	embed = discord.Embed(title = "**Banissement**", description = "Un modérateur a frappé !", url = "https://www.youtube.com/channel/UChDVo_Uqomuk7KnMVp-Lhhw?view_as=subscriber", color=0xfa8072)
+	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = "https://www.youtube.com/channel/UChDVo_Uqomuk7KnMVp-Lhhw?view_as=subscriber")
 	embed.set_thumbnail(url = "https://discordemoji.com/assets/emoji/BanneHammer.png")
-	embed.add_field(name = "Sondage", value = recette.content, inline = True)
-	embed.add_field(name = "Host", value = ctx.author.name, inline = True)
-	embed.set_footer(text = ".ms")
+	embed.add_field(name = "Membre banni", value = user.name, inline = True)
+	embed.add_field(name = "Raison", value = reason, inline = True)
+	embed.add_field(name = "Modérateur", value = ctx.author.name, inline = True)
+	embed.set_footer(text = random.choice(funFact))
+    	await message.add_reaction("✅")
+	    await message.add_reaction("❌")
 
-	await message.add_reaction("✅")
-	await message.add_reaction("❌")
-    await ctx.send(embed = embed)
+	await ctx.send(embed = embed)
 
 bot.run(bot.run(os.environ['TOKEN']))

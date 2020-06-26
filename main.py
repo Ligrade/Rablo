@@ -177,7 +177,7 @@ async def pingg(ctx):
     await ctx.send('Pong!')
 
 @bot.command()
-async def ping():#a!ping
+async def ping():
   await ctx.send(f'Pong! {bot.latency}')
 
 bot.run(bot.run(os.environ['TOKEN']))

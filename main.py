@@ -191,9 +191,27 @@ async def wiki(ctx, wiki):
 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
     await ctx.send(a)
 
+# @bot.command(aliases=['minisondage', 'sondage', 'ms'])
+# async def msondage(ctx):
+# 	await ctx.send("Que voulez vous écrire ?")
+
+# 	def checkMessage(message):
+# 		return message.author == ctx.message.author and ctx.message.channel == message.channel
+
+# 	try:
+# 		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
+# 	except:
+# 		await ctx.send("Veuillez réitérer la commande.")
+# 		return
+# 	message = await ctx.send(f"**Sondage:** {recette.content}")
+# 	await message.add_reaction("✅")
+# 	await message.add_reaction("❌")
+
+#mat
+
 @bot.command(aliases=['minisondage', 'sondage', 'ms'])
-async def msondage(ctx):
-	await ctx.send("Que voulez vous écrire ?")
+async def ms(ctx):
+    await ctx.send("Que voulez vous écrire ?")
 
 	def checkMessage(message):
 		return message.author == ctx.message.author and ctx.message.channel == message.channel
@@ -203,7 +221,12 @@ async def msondage(ctx):
 	except:
 		await ctx.send("Veuillez réitérer la commande.")
 		return
-	message = await ctx.send(f"**Sondage:** {recette.content}")
+
+    e = discord.Embed(title='SONDAGE', color=0x33CC33, timestamp=datetime.utcnow())
+    e.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
+    e.add_field(name='`Host`', value='**Ligrade')
+    e.set_footer(text=f'{recette.content}.')
+    await ctx.send(embed=e)
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
 

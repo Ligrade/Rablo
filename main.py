@@ -176,10 +176,10 @@ async def infos(ctx):
 async def pingg(ctx):
     await ctx.send('Pong!')
 
-@client.command(pass_context=True)
+@bot.command(pass_context=True)
 async def ping(ctx):
     now = datetime.datetime.utcnow()
     delta = now - ctx.message.timestamp
-    await client.say('{}ms'.format(delta(microseconds=1)))
+    await bot.say('{}ms'.format(delta(microseconds=1)))
 
 bot.run(bot.run(os.environ['TOKEN']))

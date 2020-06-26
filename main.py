@@ -191,32 +191,29 @@ async def wiki(ctx, wiki):
 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
     await ctx.send(a)
 
-@bot.command(aliases=['minisondage', 'sondage', 'ms'])
-async def msondage(ctx):
-	await ctx.send("Que voulez vous écrire ?")
+# @bot.command(aliases=['minisondage', 'sondage', 'ms'])
+# async def msondage(ctx):
+# 	await ctx.send("Que voulez vous écrire ?")
 
-	def checkMessage(message):
-		return message.author == ctx.message.author and ctx.message.channel == message.channel
+# 	def checkMessage(message):
+# 		return message.author == ctx.message.author and ctx.message.channel == message.channel
 
-	try:
-		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
-	except:
-		await ctx.send("Veuillez réitérer la commande.")
-		return
-	message = await ctx.send(f"**Sondage:** {recette.content}")
-	await message.add_reaction("✅")
-	await message.add_reaction("❌")
+# 	try:
+# 		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
+# 	except:
+# 		await ctx.send("Veuillez réitérer la commande.")
+# 		return
+# 	message = await ctx.send(f"**Sondage:** {recette.content}")
+# 	await message.add_reaction("✅")
+# 	await message.add_reaction("❌")
 
 #embed
 
 @bot.command()
 async def mat(ctx):
-	#await ctx.guild.ban(user, reason = reason)
-	embed = discord.Embed(title = "**Un sondage ?**", description = "Quel est votre sondage ?", url = " ", color=0xfa8072)
-	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = " ")
-	embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/724765475900489831/726101534533877870/question_mark_PNG120.png")
+	await ctx.send("Que voulez vous écrire ?")
 
-    	def checkMessage(message):
+def checkMessage(message):
 		return message.author == ctx.message.author and ctx.message.channel == message.channel
 
 	try:
@@ -224,9 +221,11 @@ async def mat(ctx):
 	except:
 		await ctx.send("Veuillez réitérer la commande.")
 		return
-    embed = discord.Embed(title = "**SONDAGE**", description = recette.content, url = " ", color=0xfa8072)
+
+	embed = discord.Embed(title = "**SONDAGE**", description = "text test", url = " ", color=0xfa8072)
 	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = " ")
 	embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/724765475900489831/726101534533877870/question_mark_PNG120.png")
-	await ctx.send(embed = embed)
+
+    await ctx.send(embed = embed)
 
 bot.run(bot.run(os.environ['TOKEN']))

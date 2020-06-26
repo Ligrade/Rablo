@@ -108,6 +108,7 @@ async def help_fun(ctx):
     d.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
     d.add_field(name='`Wiki <sujet>`', value="Fait une recherche wikipedia")
     d.add_field(name='`8ball <question>`', value="Pose une question, je te répondrait")
+    d.add_field(name='`sondage`', value="Pour faire un mini songade en quelques secondes")
     d.add_field(name='`pp <user>`', value="Affiche la photo de profil de @user")
     await ctx.send(embed=d)
 

@@ -207,4 +207,30 @@ async def msondage(ctx):
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
 
+#mat
+
+@bot.command()
+async def mat(ctx):
+	await ctx.send("Que voulez vous écrire ?")
+
+	def checkMessage(message):
+		return message.author == ctx.message.author and ctx.message.channel == message.channel
+
+	try:
+		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
+	except:
+		await ctx.send("Veuillez réitérer la commande.")
+		return
+
+	embed = discord.Embed(title = "**Sondage**", description = " ", url = " ", color=0xfa8072)
+	embed.set_author(name = ctx.author.name, icon_url = ctx.author.avatar_url, url = " ")
+	embed.set_thumbnail(url = "https://discordemoji.com/assets/emoji/BanneHammer.png")
+	embed.add_field(name = "Sondage", value = reason, inline = True)
+	embed.add_field(name = "Host", value = ctx.author.name, inline = True)
+	embed.set_footer(text = ".ms")
+
+	message = await ctx.send(f"**Sondage:** {recette.content}")
+	await message.add_reaction("✅")
+	await message.add_reaction("❌")
+
 bot.run(bot.run(os.environ['TOKEN']))

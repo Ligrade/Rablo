@@ -191,24 +191,6 @@ async def wiki(ctx, wiki):
 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
     await ctx.send(a)
 
-# @bot.command(aliases=['minisondage', 'sondage', 'ms'])
-# async def msondage(ctx):
-# 	await ctx.send("Que voulez vous écrire ?")
-
-# 	def checkMessage(message):
-# 		return message.author == ctx.message.author and ctx.message.channel == message.channel
-
-# 	try:
-# 		recette = await bot.wait_for("message", timeout = 60, check = checkMessage)
-# 	except:
-# 		await ctx.send("Veuillez réitérer la commande.")
-# 		return
-# 	message = await ctx.send(f"**Sondage:** {recette.content}")
-# 	await message.add_reaction("✅")
-# 	await message.add_reaction("❌")
-
-#embed
-
 @bot.command(aliases=['minisondage', 'sondage', 'ms'])
 async def msondage(ctx):
 	await ctx.send("Que voulez vous écrire ?")
@@ -221,7 +203,7 @@ async def msondage(ctx):
 	except:
 		await ctx.send("Veuillez réitérer la commande.")
 		return
-	message = await ctx.send(f"`{ctx.author.name} a fait un sondage :` \n\n**{recette.content}**")
+	message = await ctx.send(f"`{ctx.author.name} a fait un sondage :`\n**{recette.content}**")
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
 

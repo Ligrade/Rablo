@@ -178,6 +178,6 @@ async def pingg(ctx):
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send(f'Pong! In {round(bot.latency * 1000)}ms')
+    await ctx.send(f'Pong! `{round(bot.latency * 1000)}`ms')
 
 bot.run(bot.run(os.environ['TOKEN']))

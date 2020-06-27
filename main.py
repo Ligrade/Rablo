@@ -257,4 +257,12 @@ async def roulette(ctx):
 
 #Music commandes
 
+# musics = {}
+# ytdl = youtube_dl.YoutubeDL()
+
+@bot.command()
+async def play(ctx, url):
+    print("play")
+    client = ctx.guild.voice_client
+
 bot.run(bot.run(os.environ['TOKEN']))

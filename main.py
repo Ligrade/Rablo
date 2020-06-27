@@ -26,7 +26,7 @@ logging.basicConfig(level='INFO')
 
 async def status_task():
     while True:
-        names = [f'{prefix}help all', f'with {len(bot.users)} users', f'on {len(bot.guilds)} servers']
+        names = [f'{prefix}help', f'with {len(bot.users)} users', f'on {len(bot.guilds)} servers']
         for name in names:
             await bot.change_presence(activity=discord.Game(name=name))
             await asyncio.sleep(300)
@@ -79,8 +79,8 @@ async def help_info(ctx):
 async def help_all(ctx):
     c = discord.Embed(description='📚 Toutes les commandes', color=0x003366, timestamp=datetime.utcnow())
     c.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
-    c.add_field(name="`help` `infos` `ping` `kick` `ban` `clear` `pp` `sondage` `8ball` `wiki` `invite`", value='Full commands list')
-    c.add_field(name="`fun`, `mod`, `music`, `info`", value='Catégories d\'aide')
+    c.add_field(name="`help` `infos` `ping` `kick` `ban` `clear` `pp` `chinese` `sondage` `8ball` `wiki` `invite`", value='Full commands list')
+    c.add_field(name="`fun` `mod` `music` `info`", value='Catégories d\'aide')
     await ctx.send(embed=c)
 
 @help.command(name='music')
@@ -110,6 +110,7 @@ async def help_fun(ctx):
     d.add_field(name='`8ball <question>`', value="Pose une question, je te répondrait")
     d.add_field(name='`sondage`', value="Pour faire un mini songade en quelques secondes")
     d.add_field(name='`pp <user>`', value="Affiche la photo de profil de @user")
+    d.add_field(name='`chinese <text>`', value="Transforme votre text en chinois")
     await ctx.send(embed=d)
 
 @bot.command(aliases=['info', 'mod', 'all', 'music'])
@@ -208,5 +209,20 @@ async def sondage(ctx):
 	message = await ctx.send(f"`{ctx.author.name} a fait un sondage :`\n**{recette.content}**")
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
+
+@bot.command(aliases=['chine', 'jap', 'Chinese'])
+async def chinese(ctx, *text):
+	chineseChar = "丹书匚刀巳下呂廾工丿片乚爪冂口尸Q尺丁丂凵V山乂Y乙"
+	chineseText = []
+	for word in text:
+		for char in word:
+			if char.isalpha():
+				index = ord(char) - ord("a")
+				transformed = chineseChar[index]
+				chineseText.append(transformed)
+			else:
+				chineseText.append(char)
+		chineseText.append(" ")
+	await ctx.send("".join(chineseText))
 
 bot.run(bot.run(os.environ['TOKEN']))

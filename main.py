@@ -16,7 +16,6 @@ import logging
 import asyncio
 import youtube_dl
 import discord
-import pip
 from discord.ext import commands
 from discord.ext.commands import Bot
 import datetime

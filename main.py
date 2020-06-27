@@ -58,7 +58,7 @@ def is_owner(ctx):
 
 @bot.group(invoke_without_command=True, aliases=['hlp', 'cmd', 'Help'])
 async def help(ctx):
-    e = discord.Embed(title='➡️ Catégories de commandes', color=0x33CC33, timestamp=datetime.utcnow())
+    e = discord.Embed(title='Catégories de commandes', color=0x33CC33, timestamp=datetime.utcnow())
     e.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
     e.add_field(name='`fun`', value='Commandes amusantes')
     e.add_field(name='`mod`', value='Commandes de modération')
@@ -69,23 +69,23 @@ async def help(ctx):
 
 @help.command(name="info")
 async def help_info(ctx):
-    e = discord.Embed(title='📎 Commandes par défaut et d\'info', color=0x00FFC0, timestamp=datetime.utcnow())
+    e = discord.Embed(title='Commandes par défaut et d\'info', color=0x00FFC0, timestamp=datetime.utcnow())
     e.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
     e.add_field(name='`infos`', value='Plus d\'infos sur moi')
-    e.add_field(name='`ping`', value='Renvoie "ping"')
+    e.add_field(name='`ping`', value='Renvoie le ping du bot')
     await ctx.send(embed=e)
 
 @help.command(name='all')
 async def help_all(ctx):
     c = discord.Embed(description='📚 Toutes les commandes', color=0x003366, timestamp=datetime.utcnow())
     c.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
-    c.add_field(name="`help`, `info`, `ping`, `kick <membre/id>`,`ban <membre/id> <reason>`, `clear <amount of messages>`, `pp <user>`, `roll <number>`", value='Full commands list')
+    c.add_field(name="`help` `infos` `ping` `kick` `ban` `clear` `pp` `sondage` `8ball` `wiki` `invite`", value='Full commands list')
     c.add_field(name="`fun`, `mod`, `music`, `info`", value='Catégories d\'aide')
     await ctx.send(embed=c)
 
 @help.command(name='music')
 async def help_utilities(ctx):
-    c = discord.Embed(description='⚒️ Utilitaires', color=0x003366, timestamp=datetime.utcnow())
+    c = discord.Embed(description='Music', color=0x003366, timestamp=datetime.utcnow())
     c.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
     c.add_field(name='`play <link>`', value='Get the profile picture of some user')
     c.add_field(name='`stop`', value='Lol mdr')
@@ -95,7 +95,7 @@ async def help_utilities(ctx):
 
 @help.command(name="mod")
 async def help_moderator(ctx):
-    a = discord.Embed(description="🛡️ Modérateur", title='➡️Commands list', color=0xffff00, timestamp=datetime.utcnow()) 
+    a = discord.Embed(description="Mod", title='➡️Commands list', color=0xffff00, timestamp=datetime.utcnow()) 
     a.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
     a.add_field(name='`kick <member/id>`', value='Exclue un membre du serveur')
     a.add_field(name='`ban <membre/id> <raison>`', value='Exclue définitivement un membre du serveur')
@@ -104,7 +104,7 @@ async def help_moderator(ctx):
 
 @help.command(name="fun")
 async def help_fun(ctx):
-    d = discord.Embed(description='🎀 Fun', title='➡️Commands list', color=0xFFA2DD, timestamp=datetime.utcnow())
+    d = discord.Embed(description='Fun', title='➡️Commands list', color=0xFFA2DD, timestamp=datetime.utcnow())
     d.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
     d.add_field(name='`Wiki <sujet>`', value="Fait une recherche wikipedia")
     d.add_field(name='`8ball <question>`', value="Pose une question, je te répondrait")
@@ -176,13 +176,14 @@ async def infos(ctx):
 async def ping(ctx):
     await ctx.send(f'🏓 Pong! `{round(bot.latency * 1000)}`ms')
 
-@bot.command(aliases=['8ball'])
+@bot.command(aliases=['8ball','8','8Ball'])
 async def _8ball(ctx, *, question):
   responses = [
             "Oui.",
             "Non.",
             "Sans aucun doute.",
             "Biensûr.",
+            "Peut être."
             "Je ne pense pas."]
   await ctx.send(f'**Question :** {question}\n**Réponce :** {random.choice(responses)}')
 
@@ -192,8 +193,8 @@ async def wiki(ctx, wiki):
 🔀 *More info* https://en.wikipedia.org/wiki/{wiki}"""
     await ctx.send(a)
 
-@bot.command(aliases=['minisondage', 'sondage', 'ms'])
-async def msondage(ctx):
+@bot.command(aliases=['minisondage', 'Sondage', 'ms'])
+async def sondage(ctx):
 	await ctx.send("Que voulez vous écrire ?")
 
 	def checkMessage(message):

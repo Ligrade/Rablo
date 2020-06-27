@@ -266,7 +266,7 @@ async def on_member_join(member):
     pass
 
 @bot.command()
-async def join_voice(self, ctx):
+async def join(ctx):
     connected = ctx.author.voice
     if connected:
         await connected.channel.connect()

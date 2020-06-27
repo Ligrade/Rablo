@@ -158,7 +158,7 @@ async def clear(ctx, amount: int):
     amount=amount+1
     try:
         deleted = await ctx.channel.purge(limit=amount)
-        await ctx.send(f"`{len(deleted)}` messages supprimés avec succès !", delete_after = 5)
+        await ctx.send(f"`{len(deleted)}` messages supprimés avec succès !", delete_after = 10)
     except:
         await ctx.send('❌ Une erreur est survenue')
 
@@ -227,7 +227,7 @@ async def chinese(ctx, *text):
 
 @bot.command(aliases=['rs', 'Roulette'])
 async def roulette(ctx):
-	await ctx.send("Roulette dans `15 secondes`! Envoie **\"join\"** pour participer.")
+	await ctx.send("Roulette dans `10 secondes`! Envoie **\"join\"** pour participer.")
 	
 	players = []
 	def check(message):
@@ -235,11 +235,11 @@ async def roulette(ctx):
 
 	try:
 		while True:
-			participation = await bot.wait_for('message', timeout = 15, check = check)
+			participation = await bot.wait_for('message', timeout = 10, check = check)
 			players.append(participation.author)
 			print("Nouveau participant : ")
 			print(participation)
-			await ctx.send(f"**{participation.author.name}**, participe. Tirage dans `15 secondes...`")
+			await ctx.send(f"**{participation.author.name}**, participe. Tirage dans `10 secondes...`")
 	except: #Timeout
 		print("Demarrage du tirrage")
 
@@ -250,6 +250,6 @@ async def roulette(ctx):
 	await ctx.send("**1**")
 	await asyncio.sleep(1)
 	loser = random.choice(players)
-	await ctx.send(":boom::gun: **POoUM !!!** `" + loser.name + "`" + " est mort!")
+	await ctx.send(":boom::gun: **POoUM**!!! `" + loser.name + "`" + " est mort!")
 
 bot.run(bot.run(os.environ['TOKEN']))

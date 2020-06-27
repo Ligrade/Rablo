@@ -231,7 +231,7 @@ async def roulette(ctx):
 	
 	players = []
 	def check(message):
-		return message.channel == ctx.message.channel and message.author not in players and message.content == "join" "Join"
+		return message.channel == ctx.message.channel and message.author not in players and message.content == "join"
 
 	try:
 		while True:

@@ -330,9 +330,9 @@ async def on_member_join(member):
     pass
 
 @commands.command()
-async def join(self, ctx):
-    channel = ctx.author.voice.channel
-    print(channel.id)
-    await self.client.VoiceChannel.connect()
+async def join_voice(ctx):
+    connected = ctx.author.voice
+    if connected:
+        await connected.channel.connect()
 
 bot.run(bot.run(os.environ['TOKEN']))

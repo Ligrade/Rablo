@@ -4,3 +4,5 @@ dnspython==1.16.0
 youtube_dl
 pynacl
 ffmpeg
+opuslib
+pip

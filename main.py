@@ -17,7 +17,7 @@ import asyncio
 import youtube_dl
 import discord
 from discord.ext import commands
-from discord.ext.commands import Bot
+from discord.ext.commands import bot
 import datetime
 from datetime import *
 
@@ -261,8 +261,7 @@ async def roulette(ctx):
 # ytdl = youtube_dl.YoutubeDL()
 
 @bot.command()
-async def play(ctx, url):
-    print("play")
+async def join(ctx):
     client = ctx.guild.voice_client
 
 bot.run(bot.run(os.environ['TOKEN']))

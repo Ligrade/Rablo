@@ -325,10 +325,13 @@ ytdl = youtube_dl.YoutubeDL()
 #         await ctx.send(f"Je lance : {video.url}")
 #         play_song(client, musics[ctx.guild], video)
 
-@bot.command(pass_context=True)
+@bot.command()
 async def join(ctx):
-   author = ctx.message.author
-   channel = author.voice_channel
-   await bot.join_voice_channel(channel)
+    channel = ctx.author.voice.channel
+    await channel.connect()
+    
+@bot.command()
+async def leave(ctx):
+    await ctx.voice_client.disconnect()
 
 bot.run(bot.run(os.environ['TOKEN']))

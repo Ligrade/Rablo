@@ -272,7 +272,7 @@ async def on_member_join(member):
 #         await connected.channel.connect()
 
 @bot.command()
-async def join(ctx,):
+async def join(ctx):
     print("join")
     client = ctx.guild.voice_client
 

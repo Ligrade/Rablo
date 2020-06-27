@@ -255,6 +255,6 @@ async def roulette(ctx):
 	loser = random.choice(players)
 	await ctx.send(":boom::gun: **POoUM**!!! `" + loser.name + "`" + " est mort!")
 
-#Music
+#Music commandes
 
 bot.run(bot.run(os.environ['TOKEN']))

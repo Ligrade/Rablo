@@ -251,7 +251,7 @@ async def roulette(ctx):
 	await asyncio.sleep(1)
 	await ctx.send("**1**")
 	await asyncio.sleep(1)
-    	await ctx.send(":boom::gun: **PAN !!!**")
+    await ctx.send(":boom::gun: **PAN !!!**")
 	await asyncio.sleep(1)
 	loser = random.choice(players)
 	price = random.choice(gagner)

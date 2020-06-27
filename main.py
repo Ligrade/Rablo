@@ -243,8 +243,6 @@ async def roulette(ctx):
 	except: #Timeout
 		print("Demarrage du tirrage")
 
-	gagner = ["Dead", "Morte"]
-
 	await ctx.send("Le tirage dans **3**...")
 	await asyncio.sleep(1)
 	await ctx.send("**2**...")
@@ -252,9 +250,8 @@ async def roulette(ctx):
 	await ctx.send("**1**")
 	await asyncio.sleep(1)
 	loser = random.choice(players)
-	price = random.choice(gagner)
-	await ctx.send(f":boom::gun: PAN !!!")
+	await ctx.send(f":boom::gun: **POoUM !!!**")
 	await asyncio.sleep(1)
-	await ctx.send("**" + loser.name + "**" + "Est mort!")
+	await ctx.send("**" + loser.name + "**" + " Est Mort!")
 
 bot.run(bot.run(os.environ['TOKEN']))

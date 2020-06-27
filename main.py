@@ -14,6 +14,7 @@ import random
 import aiohttp
 import logging
 import asyncio
+import youtube_dl
 import discord
 from discord.ext import commands
 import datetime
@@ -252,5 +253,7 @@ async def roulette(ctx):
 	await asyncio.sleep(1)
 	loser = random.choice(players)
 	await ctx.send(":boom::gun: **POoUM**!!! `" + loser.name + "`" + " est mort!")
+
+#Music
 
 bot.run(bot.run(os.environ['TOKEN']))

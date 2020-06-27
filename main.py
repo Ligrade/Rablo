@@ -1,4 +1,4 @@
-botversion = '1.0 Rabelo build'
+botversion = '1.1 Rabelo beta'
 prefix = '.'
 print(f"""___________________________________________________
         ____       _    _____ _           _
@@ -225,9 +225,9 @@ async def chinese(ctx, *text):
 		chineseText.append(" ")
 	await ctx.send("".join(chineseText))
 
-@bot.command()
+@bot.command(aliases=['rs', 'Roulette'])
 async def roulette(ctx):
-	await ctx.send("La roulette commencera dans 10 secondes. Envoyez **\"join\"** dans ce channel pour y participer.")
+	await ctx.send("Roulette dans 10 secondes! Envoie **\"join\"** pour participer.")
 	
 	players = []
 	def check(message):
@@ -239,21 +239,23 @@ async def roulette(ctx):
 			players.append(participation.author)
 			print("Nouveau participant : ")
 			print(participation)
-			await ctx.send(f"**{participation.author.name}**, participe au tirage ! Le tirage commence dans 15 secondes")
+			await ctx.send(f"**{participation.author.name}**, participe. Tirage dans `15 secondes`")
 	except: #Timeout
 		print("Demarrage du tirrage")
 
-	gagner = ["ban", "kick", "role personnel", "mute", "gage"]
+	gagner = ["Morte", "Morte", "Morte", "Morte", "Morte"]
 
-	await ctx.send("Le tirage va commencer dans **3**...")
+	await ctx.send("Le tirage dans **3**...")
 	await asyncio.sleep(1)
-	await ctx.send("**2**")
+	await ctx.send("**2**...")
 	await asyncio.sleep(1)
 	await ctx.send("**1**")
 	await asyncio.sleep(1)
+    	await ctx.send(":boom::gun: **PAN !!!**")
+	await asyncio.sleep(1)
 	loser = random.choice(players)
 	price = random.choice(gagner)
-	await ctx.send(f"La personne qui a gagnée un {price} est...")
+	await ctx.send(f"La personne {price} est...")
 	await asyncio.sleep(1)
 	await ctx.send("**" + loser.name + "**" + " !")
 

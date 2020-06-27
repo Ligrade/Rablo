@@ -227,7 +227,7 @@ async def chinese(ctx, *text):
 
 @bot.command(aliases=['rs', 'Roulette'])
 async def roulette(ctx):
-	await ctx.send("Roulette dans 10 secondes! Envoie **\"join\"** pour participer.")
+	await ctx.send("Roulette dans `15 secondes`! Envoie **\"join\"** pour participer.")
 	
 	players = []
 	def check(message):
@@ -250,6 +250,6 @@ async def roulette(ctx):
 	await ctx.send("**1**")
 	await asyncio.sleep(1)
 	loser = random.choice(players)
-	await ctx.send(":boom::gun: **POoUM !!!** `" + loser.name + "`" + " Est mort!")
+	await ctx.send(":boom::gun: **POoUM !!!** `" + loser.name + "`" + " est mort!")
 
 bot.run(bot.run(os.environ['TOKEN']))

@@ -17,6 +17,7 @@ import asyncio
 import youtube_dl
 import discord
 from discord.ext import commands
+from discord.ext.commands import Bot
 from discord.voice_client import VoiceClient
 import datetime
 from datetime import *
@@ -327,7 +328,7 @@ ytdl = youtube_dl.YoutubeDL()
 @bot.command(pass_context=True)
 async def join(ctx):
    author = ctx.message.author
-   voice_channel = author.voice_channel
-   vc = await bot.join_voice_channel(voice_channel)
+   channel = author.voice_channel
+   await bot.join_voice_channel(channel)
 
 bot.run(bot.run(os.environ['TOKEN']))

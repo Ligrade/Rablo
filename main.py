@@ -239,11 +239,11 @@ async def roulette(ctx):
 			players.append(participation.author)
 			print("Nouveau participant : ")
 			print(participation)
-			await ctx.send(f"**{participation.author.name}**, participe. Tirage dans `15 secondes`")
+			await ctx.send(f"**{participation.author.name}**, participe. Tirage dans `15 secondes...`")
 	except: #Timeout
 		print("Demarrage du tirrage")
 
-	gagner = ["Morte", "Morte", "Morte", "Morte", "Morte"]
+	gagner = ["Dead", "Morte"]
 
 	await ctx.send("Le tirage dans **3**...")
 	await asyncio.sleep(1)

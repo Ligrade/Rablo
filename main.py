@@ -79,7 +79,7 @@ async def help_info(ctx):
 async def help_all(ctx):
     c = discord.Embed(description='📚 Toutes les commandes', color=0x003366, timestamp=datetime.utcnow())
     c.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
-    c.add_field(name="`help` `infos` `ping` `kick` `ban` `clear` `pp` `chinese` `sondage` `8ball` `wiki` `invite`", value='Full commands list')
+    c.add_field(name="`help` `infos` `ping` `kick` `ban` `clear` `pp` `chinese` `sondage` `8ball` `wiki` `roulette` `invite`", value='Full commands list')
     c.add_field(name="`fun` `mod` `music` `info`", value='Catégories d\'aide')
     await ctx.send(embed=c)
 
@@ -111,6 +111,7 @@ async def help_fun(ctx):
     d.add_field(name='`sondage`', value="Pour faire un mini songade en quelques secondes")
     d.add_field(name='`pp <user>`', value="Affiche la photo de profil de @user")
     d.add_field(name='`chinese <text>`', value="Transforme votre text en chinois")
+    d.add_field(name='`roulette`', value="Joue à la roulette russe avec t'es amis")
     await ctx.send(embed=d)
 
 @bot.command(aliases=['info', 'mod', 'all', 'music'])
@@ -243,11 +244,11 @@ async def roulette(ctx):
 	except: #Timeout
 		print("Demarrage du tirrage")
 
-	await ctx.send("**3**")
+	await ctx.send("*3*")
 	await asyncio.sleep(1)
-	await ctx.send("**2**")
+	await ctx.send("*2*")
 	await asyncio.sleep(1)
-	await ctx.send("**1**")
+	await ctx.send("*1*")
 	await asyncio.sleep(1)
 	loser = random.choice(players)
 	await ctx.send(":boom::gun: **POoUM**!!! `" + loser.name + "`" + " est mort!")

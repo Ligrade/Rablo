@@ -330,7 +330,7 @@ async def on_member_join(member):
     pass
 
 @commands.command()
-async def join_voice(ctx):
+async def join(self, ctx):
     connected = ctx.author.voice
     if connected:
         await connected.channel.connect()

@@ -1,8 +1,5 @@
-git+https://github.com/Rapptz/discord.py
+discord.py[voice]==1.2.5
 dnspython==1.16.0
 youtube_dl
 pynacl
 youtube-dl
-
-pynacl==1.2.1
-discord.py[voice]==1.2.5

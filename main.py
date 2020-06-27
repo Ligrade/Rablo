@@ -325,11 +325,25 @@ ytdl = youtube_dl.YoutubeDL()
 #         await ctx.send(f"Je lance : {video.url}")
 #         play_song(client, musics[ctx.guild], video)
 
+@bot.event
+async def on_member_join(member):
+    pass
+
+@bot.event
+async def on_member_join(member):
+    await bot.send_message(member, 'Prompt.')
+    m = await bot.wait_for_message(author=member, channel=member)
+    if m.content == 'key':
+        # give the user the role
+        await bot.send_message(member, 'Role added')
+    else:
+        await bot.send_message(member, 'Incorrect key')
+
 @bot.command()
 async def join(ctx):
     channel = ctx.author.voice.channel
     await channel.connect()
-    
+
 @bot.command()
 async def leave(ctx):
     await ctx.voice_client.disconnect()

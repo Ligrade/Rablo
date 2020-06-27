@@ -154,12 +154,12 @@ async def kick(ctx, *, member: discord.Member):
         await ctx.send('❌ Une erreur est survenue')
 
 @commands.has_permissions(manage_messages=True)
-@bot.command()
+@bot.command(aliases=['purge', 'Clear'])
 async def clear(ctx, amount: int):
     amount=amount+1
     try:
         deleted = await ctx.channel.purge(limit=amount)
-        await ctx.send(f"`{len(deleted)}` messages supprimés avec succès !", delete_after = 10)
+        await ctx.send(f"`{len(deleted)}` messages supprimés avec succès !", delete_after = 15)
     except:
         await ctx.send('❌ Une erreur est survenue')
 

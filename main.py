@@ -326,8 +326,8 @@ async def play(ctx, url):
 
 @bot.command(pass_context=True)
 async def join(ctx):
-    author = ctx.message.author
-    channel = author.voice_channel
-    await bot.join_voice_channel(channel)
+   author = ctx.message.author
+   voice_channel = author.voice_channel
+   vc = await client.join_voice_channel(voice_channel)
 
 bot.run(bot.run(os.environ['TOKEN']))

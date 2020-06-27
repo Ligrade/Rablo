@@ -245,11 +245,11 @@ async def roulette(ctx):
 	except: #Timeout
 		print("Demarrage du tirrage")
 
-	await ctx.send("*3*")
+	await ctx.send("3")
 	await asyncio.sleep(1)
-	await ctx.send("*2*")
+	await ctx.send("2")
 	await asyncio.sleep(1)
-	await ctx.send("*1*")
+	await ctx.send("1")
 	await asyncio.sleep(1)
 	loser = random.choice(players)
 	await ctx.send(":boom::gun: **POoUM**!!! `" + loser.name + "`" + " est mort!")
@@ -322,5 +322,11 @@ async def play(ctx, url):
         client = await channel.connect()
         await ctx.send(f"Je lance : {video.url}")
         play_song(client, musics[ctx.guild], video)
+
+@bot.command(pass_context=True)
+async def join(ctx):
+    author = ctx.message.author
+    channel = author.voice_channel
+    await bot.join_voice_channel(channel)
 
 bot.run(bot.run(os.environ['TOKEN']))

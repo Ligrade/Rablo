@@ -265,10 +265,15 @@ ytdl = youtube_dl.YoutubeDL()
 async def on_member_join(member):
     pass
 
+# @bot.command()
+# async def join(ctx):
+#     connected = ctx.author.voice
+#     if connected:
+#         await connected.channel.connect()
+
 @bot.command()
-async def join(ctx):
-    connected = ctx.author.voice
-    if connected:
-        await connected.channel.connect()
+async def join(ctx,):
+    print("join")
+    client = ctx.guild.voice_client
 
 bot.run(bot.run(os.environ['TOKEN']))

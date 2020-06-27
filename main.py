@@ -210,7 +210,7 @@ async def sondage(ctx):
 	await message.add_reaction("✅")
 	await message.add_reaction("❌")
 
-@bot.command(aliases=['chine', 'jap', 'Chinese'])
+@bot.command(aliases=['chine', 'chn', 'Chinese'])
 async def chinese(ctx, *text):
 	chineseChar = "丹书匚刀巳下呂廾工丿片乚爪冂口尸Q尺丁丂凵V山乂Y乙"
 	chineseText = []
@@ -224,5 +224,37 @@ async def chinese(ctx, *text):
 				chineseText.append(char)
 		chineseText.append(" ")
 	await ctx.send("".join(chineseText))
+
+@bot.command()
+async def roulette(ctx):
+	await ctx.send("La roulette commencera dans 10 secondes. Envoyez \"moi\" dans ce channel pour y participer.")
+	
+	players = []
+	def check(message):
+		return message.channel == ctx.message.channel and message.author not in players and message.content == "moi"
+
+	try:
+		while True:
+			participation = await bot.wait_for('message', timeout = 10, check = check)
+			players.append(participation.author)
+			print("Nouveau participant : ")
+			print(participation)
+			await ctx.send(f"**{participation.author.name}** participe au tirage ! Le tirage commence dans 10 secondes")
+	except: #Timeout
+		print("Demarrage du tirrage")
+
+	gagner = ["ban", "kick", "role personnel", "mute", "gage"]
+
+	await ctx.send("Le tirage va commencer dans 3...")
+	await asyncio.sleep(1)
+	await ctx.send("2")
+	await asyncio.sleep(1)
+	await ctx.send("1")
+	await asyncio.sleep(1)
+	loser = random.choice(players)
+	price = random.choice(gagner)
+	await ctx.send(f"La personne qui a gagnée un {price} est...")
+	await asyncio.sleep(1)
+	await ctx.send("**" + loser.name + "**" + " !")
 
 bot.run(bot.run(os.environ['TOKEN']))

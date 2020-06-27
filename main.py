@@ -17,6 +17,7 @@ import asyncio
 import youtube_dl
 import discord
 from discord.ext import commands
+from discord.voice_client import VoiceClient
 import datetime
 from datetime import *
 

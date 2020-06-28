@@ -274,7 +274,7 @@ class Video:
 async def join(ctx):
     """ Test """
     try:
-        channel = ctx.message.author.voice.channel #ctx.author.voice.channel
+        channel = ctx.author.voice.channel
         voice = get(bot.voice_clients, guild=ctx.guild)
 
         if voice and voice.is_connected():
@@ -283,7 +283,7 @@ async def join(ctx):
         await channel.connect()
         await ctx.send(f"Je me suis la ^^ `{channel}`")
     except Exception as e:
-        await ctx.send(f"Пользователь не в голосовом канале")
+        await ctx.send(f"Tu n'es pas dans un salon")
 
 @bot.command()
 async def leave(ctx):

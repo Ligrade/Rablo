@@ -270,11 +270,11 @@ class Video:
         self.url = video["webpage_url"]
         self.stream_url = video_format["url"]
 
-@bot.command(aliases=['j', 'Join'])
-async def join_voice(self, ctx):
-    connected = ctx.author.voice
-    if connected:
-        await connected.channel.connect()
+@bot.command(pass_context=True(aliases=['j', 'Join']))
+async def join(ctx):
+    author = ctx.message.author
+    channel = author.voice_channel
+    await bot.join_voice_channel(channel)
 
 @bot.command()
 async def leave(ctx):

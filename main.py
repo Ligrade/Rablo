@@ -331,6 +331,7 @@ async def play(ctx, url):
 async def join(ctx):
     channel = ctx.author.voice.channel
     await channel.connect()
+    await ctx.send(f"Je suis là ^^")
  
 
 

@@ -271,11 +271,10 @@ class Video:
         self.stream_url = video_format["url"]
 
 @bot.command(aliases=['j', 'Join'])
-async def join(ctx):
-    client = ctx.guild.voice_client
-    await channel.connect()
-    await ctx.send(f"Je suis là ^^")
-    client.pause()
+async def join_voice(self, ctx):
+    connected = ctx.author.voice
+    if connected:
+        await connected.channel.connect()
 
 @bot.command()
 async def leave(ctx):

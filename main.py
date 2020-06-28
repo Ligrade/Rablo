@@ -62,10 +62,10 @@ def is_owner(ctx):
 async def help(ctx):
     e = discord.Embed(title='Catégories de commandes', color=0x33CC33, timestamp=datetime.utcnow())
     e.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
+    e.add_field(name='`music`', value='Commandes pour la musique')
     e.add_field(name='`fun`', value='Commandes amusantes')
     e.add_field(name='`mod`', value='Commandes de modération')
-    e.add_field(name='`music`', value='Commandes pour la musique')
-    e.add_field(name='`info`', value='Informations sur MOI :)')
+    e.add_field(name='`info`', value='Informations sur moi :)')
     e.set_footer(text=f'Entrez {prefix}help <nom de la catégorie> pour accéder à une liste de commandes spécifique')
     await ctx.send(embed=e)
 
@@ -89,10 +89,13 @@ async def help_all(ctx):
 async def help_utilities(ctx):
     c = discord.Embed(description='Music', color=0x003366, timestamp=datetime.utcnow())
     c.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
-    c.add_field(name='`play <link>`', value='Get the profile picture of some user')
-    c.add_field(name='`stop`', value='Lol mdr')
-    c.add_field(name='`skip`', value='Lol mdr')
-    c.add_field(name='`leave`', value='Lol mdr')
+    c.add_field(name='`play <link>`', value='Lance une vidéo/musique en audio')
+    c.add_field(name='`skip`', value='Passe à la musique suivante')
+    c.add_field(name='`pause`', value='Mettre pause')
+    c.add_field(name='`resume`', value='Reprendre')
+    c.add_field(name='`stop`', value='arrête la muisique')
+    c.add_field(name='`join`', value='Faire venir le bot en vocal')
+    c.add_field(name='`leave`', value='Faire quitter le bot de la vocal')
     await ctx.send(embed=c)
 
 @help.command(name="mod")

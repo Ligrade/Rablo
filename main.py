@@ -270,30 +270,39 @@ class Video:
         self.url = video["webpage_url"]
         self.stream_url = video_format["url"]
 
-@bot.command()
-async def leave(ctx):
+class Video:
+    def __init__(self, link):
+        video = ytdl.extract_info(link, download=False)
+        video_format = video["formats"][0]
+        self.url = video["webpage_url"]
+        self.stream_url = video_format["url"]
+
+@bot.command(aliases=['Stop'])
+async def stop(ctx):
     client = ctx.guild.voice_client
     await client.disconnect()
+    await ctx.message.add_reaction('👋')
     musics[ctx.guild] = []
 
-@bot.command()
+@bot.command(aliases=['r', 'Resume'])
 async def resume(ctx):
     client = ctx.guild.voice_client
     if client.is_paused():
         client.resume()
+        await ctx.message.add_reaction('▶️')
 
-
-@bot.command()
+@bot.command(aliases=['Pause'])
 async def pause(ctx):
     client = ctx.guild.voice_client
     if not client.is_paused():
         client.pause()
+        await ctx.message.add_reaction('⏸️')
 
-
-@bot.command()
+@bot.command(aliases=['Skip', 's'])
 async def skip(ctx):
     client = ctx.guild.voice_client
     client.stop()
+    await ctx.message.add_reaction('⏩')
 
 
 def play_song(client, queue, song):
@@ -311,7 +320,7 @@ def play_song(client, queue, song):
     client.play(source, after=next)
 
 
-@bot.command()
+@bot.command(aliases=['Play', 'p'])
 async def play(ctx, url):
     print("play")
     client = ctx.guild.voice_client
@@ -324,8 +333,9 @@ async def play(ctx, url):
         video = Video(url)
         musics[ctx.guild] = []
         client = await channel.connect()
-        await ctx.send(f"Je lance : {video.url}")
+        await ctx.send(f"**Play :** `{video.url}`")
+        await ctx.message.add_reaction('🇬')
+        await ctx.message.add_reaction('🇴')
         play_song(client, musics[ctx.guild], video)
  
-
 bot.run(bot.run(os.environ['TOKEN']))

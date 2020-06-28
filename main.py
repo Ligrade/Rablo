@@ -272,11 +272,10 @@ class Video:
 
 @bot.command(aliases=['j', 'Join'])
 async def join(ctx):
-    channel = ctx.author.voice.channel
-            if not client.is_paused():
-        client.pause()
+    client = ctx.guild.voice_client
     await channel.connect()
     await ctx.send(f"Je suis là ^^")
+    client.pause()
 
 @bot.command()
 async def leave(ctx):

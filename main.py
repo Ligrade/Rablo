@@ -270,6 +270,13 @@ class Video:
         self.url = video["webpage_url"]
         self.stream_url = video_format["url"]
 
+@bot.command(aliases=['j', 'Join'])
+async def join(ctx):
+    channel = ctx.author.voice.channel
+    await channel.connect()
+    await ctx.send(f"Je suis là ^^")
+    musics[ctx.guild] = []
+
 @bot.command()
 async def leave(ctx):
     client = ctx.guild.voice_client
@@ -326,12 +333,6 @@ async def play(ctx, url):
         client = await channel.connect()
         await ctx.send(f"Je lance : {video.url}")
         play_song(client, musics[ctx.guild], video)
-
-@bot.command(aliases=['j', 'Join'])
-async def join(ctx):
-    channel = ctx.author.voice.channel
-    await channel.connect()
-    await ctx.send(f"Je suis là ^^")
  
 
 

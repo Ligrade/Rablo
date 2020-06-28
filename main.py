@@ -270,17 +270,12 @@ class Video:
         self.url = video["webpage_url"]
         self.stream_url = video_format["url"]
 
-# @bot.command(aliases=['j', 'Join'])
-# async def join(ctx):
-#     channel = ctx.author.voice.channel
-#     await channel.connect()
-#     await ctx.send(f"Je suis là ^^")
-
-@bot.command(pass_context=True)
+@bot.command(aliases=['j', 'Join'])
 async def join(ctx):
-    author = ctx.message.author
-    channel = author.voice_channel
-    await bot.join_voice_channel(channel)
+    channel = ctx.author.voice.channel
+            if not client.is_paused():
+        client.pause()
+    await channel.connect()
     await ctx.send(f"Je suis là ^^")
 
 @bot.command()

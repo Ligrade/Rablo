@@ -108,8 +108,6 @@ async def help_utilities(ctx):
     c.add_field(name='`pause`', value='Mettre pause')
     c.add_field(name='`resume`', value='Reprendre')
     c.add_field(name='`stop`', value='arrête la muisique')
-    c.add_field(name='`join`', value='Faire venir le bot en vocal')
-    c.add_field(name='`leave`', value='Faire quitter le bot de la vocal')
     await ctx.send(embed=c)
 
 @help.command(name="mod")

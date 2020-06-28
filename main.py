@@ -272,9 +272,18 @@ class Video:
 
 @bot.command(aliases=['j', 'Join'])
 async def join(ctx):
-    author = ctx.message.author
-    channel = author.voice_channel
-    await bot.join_voice_channel(channel)
+    """ Test """
+    try:
+        channel = ctx.message.author.voice.channel #ctx.author.voice.channel
+        voice = get(bot.voice_clients, guild=ctx.guild)
+
+        if voice and voice.is_connected():
+            return await voice.move_to(channel)
+
+        await channel.connect()
+        await ctx.send(f"Je me suis la ^^ `{channel}`")
+    except Exception as e:
+        await ctx.send(f"Пользователь не в голосовом канале")
 
 @bot.command()
 async def leave(ctx):

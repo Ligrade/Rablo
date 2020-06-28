@@ -327,5 +327,22 @@ async def play(ctx, url):
         await ctx.send(f"Je lance : {video.url}")
         play_song(client, musics[ctx.guild], video)
 
+@bot.command(pass_context=True, aliases=['j', 'joi'])
+async def join(ctx):
+    """Le bot a rejoin un salon"""
+    try:
+        channel = ctx.message.author.voice.channel
+        voice = get(bot.voice_clients, guild=ctx.guild)
+
+        if voice and voice.is_connected():
+            return await voice.move_to(channel)
+
+        await channel.connect()
+        await ctx.send(f"Le bot a rejoin le salon {channel}")
+        print(f"Le bot a rejoin un salon {channel}\n")
+    except Exception as e:
+        await ctx.send(f"Tu n'es pas dans un salon fdp")
+        print(f"tu n'es pas dans un salon fdp\n")
+
 
 bot.run(bot.run(os.environ['TOKEN']))

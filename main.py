@@ -262,6 +262,8 @@ async def roulette(ctx):
 
 musics = {}
 ytdl = youtube_dl.YoutubeDL()
+from discord.utils import get
+import shutil
 
 class Video:
     def __init__(self, link):
@@ -272,18 +274,15 @@ class Video:
 
 @bot.command(aliases=['j', 'Join'])
 async def join(ctx):
-    """ Test """
-    try:
-        channel = ctx.author.voice.channel
-        voice = get(bot.voice_clients, guild=ctx.guild)
+    global voice
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_client, guild=ctx.guild)
 
-        if voice and voice.is_connected():
-            return await voice.move_to(channel)
-
-        await channel.connect()
-        await ctx.send(f"Je me suis la ^^ `{channel}`")
-    except Exception as e:
-        await ctx.send(f"Tu n'es pas dans un salon")
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+    await ctx.send(f"Joinned {channel}")
 
 @bot.command()
 async def leave(ctx):

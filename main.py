@@ -39,6 +39,20 @@ async def on_ready():
     bot.loop.create_task(status_task())
 
 @bot.event
+async def on_guild_join(guild):
+    join = bot.get_channel(726700509964271647)
+    e = discord.Embed(title=f'Serveur rejoint - {guild.name}', color=1565439, timestamp=datetime.utcnow())
+    e.add_field(name=f'Membres : {guild.member_count}', value=f'Créé le {guild.created_at}')
+    await join.send(embed=e)
+
+@bot.event
+async def on_guild_remove(guild):
+    join = bot.get_channel(726700544378535986)
+    e = discord.Embed(title=f'Serveur quitté - {guild.name}', color=16744448, timestamp=datetime.utcnow())
+    e.add_field(name=f'Membres : {guild.member_count}', value=f'Créé le {guild.created_at}')
+    await join.send(embed=e)
+
+@bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send('❌ Permissions insuffisantes')

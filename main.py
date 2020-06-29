@@ -268,7 +268,7 @@ async def roulette(ctx):
 	await ctx.send("1")
 	await asyncio.sleep(1)
 	loser = random.choice(players)
-	await ctx.send(":boom::gun: **POoUM**!!! `" + loser.name + "`" + " est mort!")
+	await ctx.send(":boom::gun: `" + loser.name + "`" + " est mort!")
 
 #Music commandes
 

@@ -74,7 +74,7 @@ def is_owner(ctx):
 
 @bot.group(invoke_without_command=True, aliases=['hlp', 'cmd', 'Help'])
 async def help(ctx):
-    e = discord.Embed(title='🇭 🇪 🇱 🇵 Les catégories.', color=0x33CC33, timestamp=datetime.utcnow())
+    e = discord.Embed(title='Catégories de commandes', color=0x33CC33, timestamp=datetime.utcnow())
     e.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
     e.add_field(name='`music`', value='Commandes pour la musique')
     e.add_field(name='`fun`', value='Commandes amusantes')

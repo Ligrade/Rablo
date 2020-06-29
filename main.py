@@ -74,7 +74,7 @@ def is_owner(ctx):
 
 @bot.group(invoke_without_command=True, aliases=['hlp', 'cmd', 'Help'])
 async def help(ctx):
-    e = discord.Embed(title='Catégories de commandes', color=0x33CC33, timestamp=datetime.utcnow())
+    e = discord.Embed(title='🇭 🇪 🇱 🇵 Les catégories.', color=0x33CC33, timestamp=datetime.utcnow())
     e.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
     e.add_field(name='`music`', value='Commandes pour la musique')
     e.add_field(name='`fun`', value='Commandes amusantes')
@@ -138,7 +138,7 @@ async def fun(ctx):
 @bot.command(aliases=['add', 'invitelink'])
 async def invite(ctx):
     await ctx.send("""Voici mon lien d'invite ♥
-<https://discordapp.com/oauth2/authorize?client_id=721449967851536447&scope=bot&permissions=2146958591>""")
+<https://discordapp.com/oauth2/authorize?client_id=724765144533434419&scope=bot&permissions=3533894>""")
 
 @bot.command(aliases=['profilepic', 'ppic', 'avatar'])
 async def pp(ctx, usr: discord.User):
@@ -183,8 +183,8 @@ async def clear(ctx, amount: int):
 @bot.command()
 async def infos(ctx):
     a = """Créé par Ligrade & Miowski
-[M'inviter]( #link )
-[Serveur de support](https://discord.gg/zVms5sF)"""
+[M'inviter](https://discordapp.com/oauth2/authorize?client_id=724765144533434419&scope=bot&permissions=3533894)
+[Serveur de support](https://discord.gg/EMvhjUE)"""
     e = discord.Embed(title = "À propos", description = a, color=0xF4A2FF, timestamp=datetime.utcnow())
     e.set_thumbnail(url="https://cdn.discordapp.com/icons/724765475900489828/2c2435cb5df00fe05296f615f88063c0.webp?size=2048")
     e.set_footer(text=botversion)

@@ -346,8 +346,6 @@ async def play(ctx, url):
         musics[ctx.guild] = []
         client = await channel.connect()
         await ctx.send(f"**Play :** `{video.url}`")
-        await ctx.message.add_reaction('🇬')
-        await ctx.message.add_reaction('🇴')
         play_song(client, musics[ctx.guild], video)
  
 bot.run(bot.run(os.environ['TOKEN']))

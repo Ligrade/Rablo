@@ -198,12 +198,13 @@ async def ping(ctx):
 @bot.command(aliases=['8ball','8','8Ball'])
 async def _8ball(ctx, *, question):
   responses = [
-            "Oui.",
-            "Non.",
-            "Sans aucun doute.",
-            "Biensûr.",
-            "Peut être."
-            "Je ne pense pas."]
+            "Insulter un modo",
+            "Modifie le grade perso en : BonTouTou",
+            "Charo un modo",
+            "Appeler un pote a nous et faire croire qu’on est homo",
+            "Leak sont numéro dans le freecube A",
+            "Chanter un truc génant sur ts et record pour l’outro de la vidéo"
+            "Danser le floss en cam"]
   await ctx.send(f'**Question :** {question}\n**Réponce :** {random.choice(responses)}')
 
 @bot.command(aliases=['Wiki', 'wikipedia', 'Wikipedia'])
